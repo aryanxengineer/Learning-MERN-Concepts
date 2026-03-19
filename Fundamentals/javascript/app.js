@@ -1,3 +1,5 @@
+"use strict";
+
 // Core javascript
 // 1. Arrow function lexically bind this -> arrow function ke andar ka this apne parent function ke behalf par inherit hota hai. 
 // --------------------------------------------------------------------------------------------
@@ -73,3 +75,83 @@
 
 
 // 8. Event loop → Handles async execution using call stack + queues (microtasks like promises run before macro tasks like setTimeout).
+
+// Microtasks
+// Promises
+// async/await
+
+// Macrotasks
+// setTimeout()
+// setInterval()
+// setImmediate() (Node.js specific)
+// I/O callbacks (file system, network, DB, etc.)
+// UI rendering / repaint (browser)
+// requestAnimationFrame() (browser)
+// requestIdleCallback() (browser)
+// DOM events (click, input, scroll, etc.)
+// MessageChannel / postMessage callbacks
+// --------------------------------------------------------------------------------------------
+
+
+// 9. Set, Map, WeakSet, WeakMap → Set (unique values), Map (key-value), Weak* allow garbage collection of keys (no memory leaks).
+// const userIds = new Set();
+// const userMap = new Map();
+// const activeUsers = new WeakSet();
+// const privateData = new WeakMap();
+
+// // set example
+// userIds.add("u1");
+// userIds.add("u2");
+// userIds.add("u1"); // duplicate ignored
+
+// // map example
+// userMap.set("u1", { name: "Arya" });
+// userMap.set("u2", { name: "Rahul" });
+
+// // weak set example
+// let user = { id: "u1" };
+// activeUsers.add(user);
+// // later
+// user = null; // eligible for garbage collection
+
+// // weak map example
+// privateData.set(user, { token: "secret" });
+// console.log(privateData.get(user)); // { token: 'secret' }
+// // later
+// user = null; // key + value eligible for GC
+// --------------------------------------------------------------------------------------------
+
+
+// 10. Debouncing & Throttling → Debounce delays execution until inactivity; throttle limits execution rate over time.
+// Debounce → reduces unnecessary API load
+// Throttle → controls CPU-heavy operations frequency
+// Both are critical for performance optimization + rate limiting at UI layer
+// --------------------------------------------------------------------------------------------
+
+
+// 11. JSON → parse converts string → object; stringify converts object → string (used in APIs/storage).
+// const obj = {
+    //     name: 'aryan',
+    //     age: 12
+    // }
+    
+    // const objAsString = JSON.stringify(obj);
+    // console.log(objAsString);
+    
+    // const parsedObject = JSON.parse(objAsString);
+    // console.log(parsedObject.name);
+// --------------------------------------------------------------------------------------------
+
+
+// 12. Prototypes → Objects inherit properties via prototype chain, enabling memory-efficient method sharing.
+// function User(name) {
+//   this.name = name;
+// }
+
+// // shared method (NOT recreated per instance)
+// User.prototype.sayHi = function () {
+//   return `Hi, I am ${this.name}`;
+// };
+
+// const u1 = new User("Arya");
+// const u2 = new User("Rahul");
