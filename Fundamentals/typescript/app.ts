@@ -175,12 +175,22 @@
 // ------------------------------------------------------------------------------------------------------------------------
 
 // Generics — Enable reusable, type-safe components/functions (<T>), critical for scalable abstractions like repositories.
-
 // Generic constraints — Restrict generics using extends to enforce required structure on generic types.
+// ------------------------------------------------------------------------------------------------------------------------
 
 // Utility types — Built-in helpers (Partial, Pick, etc.) to transform types efficiently without rewriting structures.
+// type User = {
+//   id: string;
+//   name: string;
+//   email: string;
+//   password: string;
+// };
+// API response (hide password)
+// type PublicUser = Omit<User, "password">;
+// ------------------------------------------------------------------------------------------------------------------------
 
 // Advanced utility types — Types like Exclude, ReturnType enable meta-programming and dynamic type transformations.
+// ------------------------------------------------------------------------------------------------------------------------
 
 // Mapped types — Transform each property of a type programmatically ({ [K in keyof T]: ... }).
 
