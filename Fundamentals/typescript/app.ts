@@ -192,17 +192,83 @@
 // Advanced utility types — Types like Exclude, ReturnType enable meta-programming and dynamic type transformations.
 // ------------------------------------------------------------------------------------------------------------------------
 
-// Mapped types — Transform each property of a type programmatically ({ [K in keyof T]: ... }).
+// Mapped types — Transform each property of a type programmatically ({ [K in keyof T]: ... })
+// type User = {
+//   id: string;
+//   name: string;
+//   email: string;
+// };
+
+// // validation state
+// type ValidationErrors = {
+//   [K in keyof User]?: string;
+// };
+
+// // output
+// {
+//   id?: string;
+//   name?: string;
+//   email?: string;
+// }
+// ------------------------------------------------------------------------------------------------------------------------
 
 // Conditional types — Define types based on conditions (T extends U ? X : Y) enabling dynamic type logic.
+// type ApiResponse<T> = T extends null
+//   ? { success: false; error: string }
+//   : { success: true; data: T };
+
+// type Res1 = ApiResponse<string>;
+// // { success: true; data: string }
+
+// type Res2 = ApiResponse<null>;
+// // { success: false; error: string }
+// ------------------------------------------------------------------------------------------------------------------------
 
 // keyof operator — Produces union of keys from a type, useful for building dynamic, type-safe access patterns.
+// function getValue<T>(obj: T, key: keyof T) {
+//   return obj[key]; // ✅ safe
+// }
+
+// const user = { id: "1", name: "Arya" };
+
+// getValue(user, "name"); // ✅
+// // getValue(user, "email"); ❌ error
+// ------------------------------------------------------------------------------------------------------------------------
 
 // typeof operator (type context) — Extracts type from variables/functions for reuse in type definitions.
+// ✅ single source of truth
+// const user = {
+//   id: "1",
+//   name: "Arya"
+// };
+
+// type User = typeof user;
+
+// function getUser() {
+//   return { id: "1", name: "Arya" };
+// }
+
+// type User = ReturnType<typeof getUser>;
+// ------------------------------------------------------------------------------------------------------------------------
 
 // Indexed access types — Access specific property types (User['name']) for precise type reuse.
+// Type["key"] → us property ka type
+// Type[keyof Type] → sab values ka union
+
+// type User = {
+//   id: string;
+//   name: string;
+// };
+
+// type UserName = User["name"]; // string
+// ------------------------------------------------------------------------------------------------------------------------
 
 // Template literal types — Create dynamic string types (user_${string}) for advanced type-safe string patterns.
+// type UserId = `user_${string}`;
+
+// const id1: UserId = "user_123";   // ✅
+// const id2: UserId = "admin_123";  // ❌
+// ------------------------------------------------------------------------------------------------------------------------
 
 // Discriminated unions — Use a common literal field to safely distinguish between union members (common in API responses).
 
