@@ -1,0 +1,50 @@
+// Middleware concept (functions in request → response lifecycle pipeline)
+// Execution flow (sequential chaining using next())
+// Types of middleware (application-level, router-level, error-handling, built-in, third-party)
+// Request lifecycle understanding (req → middleware stack → controller → response)
+// Order of middleware execution (critical for correctness)
+// Short-circuiting request (sending response without calling next())
+// Built-in middleware usage (express.json, express.urlencoded, express.static)
+// Custom middleware creation (reusable, modular functions)
+// Async middleware handling (proper async/await, error propagation)
+// Error-handling middleware signature ((err, req, res, next))
+// Centralized error handling (single global error handler)
+// Differentiating operational vs programming errors
+// Middleware composition (chaining multiple middleware cleanly)
+// Route-specific middleware vs global middleware
+// Conditional middleware execution (based on request context)
+// Authentication middleware (JWT validation, session validation)
+// Authorization middleware (RBAC, permission checks)
+// Input validation middleware (schema validation using Joi/Zod)
+// Security middleware (Helmet, CORS configuration)
+// Rate limiting middleware (protect against abuse)
+// Sanitization middleware (prevent NoSQL injection, XSS)
+// Logging middleware (request/response logging, correlation IDs)
+// Monitoring hooks (latency tracking, metrics collection)
+// Performance considerations (avoid heavy computation inside middleware)
+// Avoid blocking event loop (use async/non-blocking operations)
+// Caching middleware (Redis-based response caching)
+// Reusability (design generic, composable middleware functions)
+// Config-driven middleware (enable/disable via env/config)
+// Middleware layering strategy (global → feature → route-level)
+// Separation of concerns (auth, validation, business logic isolated)
+// Error propagation patterns (next(err) vs throwing in async)
+// Wrapper utilities to handle async errors (avoid repetitive try-catch)
+// File handling middleware (Multer for uploads)
+// Request transformation middleware (normalize data before controller)
+// API version-aware middleware (handle behavior per version)
+// Multi-tenant middleware (tenant identification per request)
+// Testing middleware (unit testing with mocked req/res/next)
+// Integration testing in request pipeline
+// Production best practices
+    // Keep middleware thin and focused (single responsibility)
+    // Avoid side effects (except logging/metrics)
+    // Maintain idempotency where applicable
+    // Ensure consistent request mutation patterns (attach to req safely)
+// Folder structure organization (/middlewares per domain or type)
+// Naming conventions (clear intent: authMiddleware, validateUserInput)
+// Real-world patterns
+    // Request context injection (req.user, req.requestId)
+    // Global error boundary middleware
+    // Feature flags middleware
+    // A/B testing middleware for experiments
